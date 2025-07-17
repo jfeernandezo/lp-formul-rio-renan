@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palestra Gratuita - Como se Aposentar sem Depender de Advogado</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(249, 115, 22, 0.6); }
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(-45deg, #ff6b35, #f7931e, #ff8c42, #ff6b35);
+            background-size: 400% 400%;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        /* Hero title hover effect */
+        .hero-title {
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .hero-title:hover {
+            text-shadow: 
+                0 0 10px rgba(249, 115, 22, 0.5),
+                0 0 20px rgba(249, 115, 22, 0.3),
+                0 0 30px rgba(249, 115, 22, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .hero-title:hover .highlight {
+            text-shadow: none;
+            filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.8));
+        }
+
+        /* Card hover effects */
+        .benefit-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .benefit-card:hover::before {
+            left: 100%;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-card {
+            transition: all 0.3s ease;
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid #f97316;
+        }
+
+        .form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15);
+        }
+
+        /* Button animations */
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Input focus effects */
+        .form-input {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.1);
+        }
+
+        /* Scroll animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Icon animations */
+        .icon-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0,0,0);
+            }
+            40%, 43% {
+                transform: translate3d(0, -10px, 0);
+            }
+            70% {
+                transform: translate3d(0, -5px, 0);
+            }
+            90% {
+                transform: translate3d(0, -2px, 0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 overflow-x-hidden">
+    <div class="min-h-screen">
+        <!-- Hero Section -->
+        <section class="py-12 px-4 sm:px-6 lg:px-8 relative">
+            <!-- Background decoration -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute -top-40 -right-40 w-80 h-80 bg-orange-100 rounded-full opacity-20 float-animation"></div>
+                <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-50 rounded-full opacity-30" style="animation: float 4s ease-in-out infinite reverse;"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <!-- Main Headline -->
+                <h1 class="hero-title text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight" data-aos="fade-down" data-aos-duration="1000">
+                    Aprenda como se aposentar sem depender de advogado em nossa 
+                    <span class="highlight">Palestra Gratuita</span>!
+                </h1>
+                
+                <!-- Sub-headline -->
+                <p class="text-lg sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    Preencha os dados abaixo para garantir sua vaga e receber o link de acesso por e-mail e WhatsApp.
+                </p>
+
+                <!-- Floating arrow -->
+                <div class="icon-bounce" data-aos="fade-in" data-aos-delay="1000">
+                    <svg class="w-8 h-8 text-orange-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="py-8 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto">
+                <!-- Main Form Card -->
+                <div class="form-card bg-white rounded-2xl shadow-lg p-8 relative" data-aos="zoom-in" data-aos-duration="800">
+                    <!-- Card Title with Icon -->
+                    <div class="text-center mb-6">
+                        <div class="flex items-center justify-center mb-4" data-aos="fade-down" data-aos-delay="300">
+                            <!-- Calendar Icon -->
+                            <div class="pulse-glow rounded-full p-2 mr-3">
+                                <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Inscreva-se para a Palestra Gratuita</h2>
+                        </div>
+                        
+                        <!-- Trust Badge -->
+                        <div class="inline-flex items-center px-4 py-2 gradient-bg text-white rounded-full text-sm font-medium" data-aos="fade-up" data-aos-delay="400">
+                            100% Gratuito e Online
+                        </div>
+                    </div>
+
+                    <!-- Registration Form -->
+                    <form class="space-y-6" data-aos="fade-up" data-aos-delay="500">
+                        <!-- Full Name Field -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                                Seu nome *
+                            </label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                required
+                                placeholder="Digite seu nome completo"
+                                class="form-input w-full p-3 bg-gray-100 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                            >
+                        </div>
+
+                        <!-- Email Field -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                                Seu melhor e-mail *
+                            </label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required
+                                placeholder="Onde você quer receber o acesso?"
+                                class="form-input w-full p-3 bg-gray-100 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                            >
+                        </div>
+
+                        <!-- WhatsApp Field -->
+                        <div>
+                            <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-2">
+                                WhatsApp *
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="whatsapp" 
+                                name="whatsapp" 
+                                required
+                                placeholder="(XX) 99999-9999"
+                                class="form-input w-full p-3 bg-gray-100 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                            >
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button 
+                            type="submit"
+                            class="cta-button w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl relative z-10"
+                        >
+                            GARANTIR MINHA VAGA AGORA
+                        </button>
+
+                        <!-- Privacy Notice -->
+                        <div class="flex items-center justify-center text-sm text-gray-600 mt-4" data-aos="fade-in" data-aos-delay="700">
+                            <!-- Lock Icon -->
+                            <svg class="w-4 h-4 mr-2 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                            Seus dados estão 100% seguros
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-orange-50 relative overflow-hidden">
+            <!-- Background decoration -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-orange-100 rounded-full opacity-10 transform translate-x-32 -translate-y-32"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-orange-200 rounded-full opacity-5 transform -translate-x-48 translate-y-48"></div>
+            
+            <div class="max-w-6xl mx-auto relative z-10">
+                <!-- Section Title -->
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800" data-aos="fade-up" data-aos-duration="800">
+                    Na palestra, você vai descobrir:
+                </h2>
+
+                <!-- Benefits Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Benefit Card 1 -->
+                    <div class="benefit-card bg-white rounded-xl shadow-md p-6 text-center relative z-10" data-aos="fade-up" data-aos-delay="100">
+                        <!-- Icon Circle -->
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-transform duration-300 hover:rotate-12">
+                            <!-- Warning Icon -->
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">
+                            Os 3 maiores erros que te impedem de aposentar
+                        </h3>
+                        <p class="text-gray-600">
+                            Saiba como evitar as armadilhas comuns do processo no INSS.
+                        </p>
+                    </div>
+
+                    <!-- Benefit Card 2 -->
+                    <div class="benefit-card bg-white rounded-xl shadow-md p-6 text-center relative z-10" data-aos="fade-up" data-aos-delay="200">
+                        <!-- Icon Circle -->
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-transform duration-300 hover:rotate-12">
+                            <!-- Document Icon -->
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">
+                            Como organizar sua documentação
+                        </h3>
+                        <p class="text-gray-600">
+                            Descubra quais documentos são essenciais e como organizá-los corretamente.
+                        </p>
+                    </div>
+
+                    <!-- Benefit Card 3 -->
+                    <div class="benefit-card bg-white rounded-xl shadow-md p-6 text-center relative z-10" data-aos="fade-up" data-aos-delay="300">
+                        <!-- Icon Circle -->
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-transform duration-300 hover:rotate-12">
+                            <!-- Clock Icon -->
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">
+                            O momento certo para dar entrada
+                        </h3>
+                        <p class="text-gray-600">
+                            Aprenda a calcular o tempo ideal e não perca dinheiro esperando demais.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-200" data-aos="fade-up">
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-gray-600">
+                    © 2025 Renan Félix - Todos os direitos reservados. Esta é uma palestra educativa gratuita.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Initialize AOS -->
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Add scroll-triggered animations
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.fade-in-up');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate');
+                }
+            });
+        });
+
+        // Add form input animations
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
